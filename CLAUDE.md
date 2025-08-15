@@ -57,28 +57,27 @@ src/
 
 ## GitHub Pages 배포 설정
 
-### 1. 배포 스크립트 추가
-`package.json`에 다음 스크립트 추가:
-```json
-{
-  "scripts": {
-    "deploy": "bun run build && gh-pages -d dist"
-  }
-}
-```
+### 1. GitHub Actions 자동 배포 (권장)
 
-### 2. GitHub Pages 설정
-1. GitHub 저장소 Settings > Pages
-2. Source: Deploy from a branch
-3. Branch: gh-pages / (root)
+#### GitHub 저장소 설정
+1. GitHub 저장소로 이동: https://github.com/HeoJeongBo/heojeongbo.github.io
+2. **Settings** > **Pages** 메뉴로 이동
+3. **Source**를 "GitHub Actions"로 변경
+4. 완료! 이제 main 브랜치에 push할 때마다 자동 배포됩니다.
 
-### 3. Base URL 설정
-`vite.config.ts`에 GitHub Pages용 base URL 추가:
-```typescript
-export default defineConfig({
-  base: '/heojeongbo.github.io/',
-  // ... 기타 설정
-})
+#### 토큰 설정 (자동으로 제공됨)
+- `GITHUB_TOKEN`은 자동으로 제공되므로 별도 설정 불필요
+- GitHub Actions가 Pages 권한을 자동으로 가집니다
+
+#### 배포 과정
+1. `git push origin main` → GitHub Actions 자동 실행
+2. Bun 설치 → 의존성 설치 → 빌드 → GitHub Pages 배포
+3. https://heojeongbo.github.io 에서 확인
+
+### 2. 수동 배포 (백업 방법)
+```bash
+# 수동 배포가 필요한 경우
+bun run deploy:manual
 ```
 
 ### Git 저장소 설정
@@ -86,14 +85,10 @@ export default defineConfig({
 git remote add origin https://github.com/HeoJeongBo/heojeongbo.github.io.git
 ```
 
-### 4. 배포 명령어
-```bash
-# 의존성 설치 (gh-pages)
-bun add -d gh-pages
-
-# 배포 실행
-bun run deploy
-```
+### 배포 확인
+- **URL**: https://heojeongbo.github.io
+- **빌드 상태**: GitHub 저장소의 Actions 탭에서 확인
+- **배포 시간**: 보통 1-3분 소요
 
 ## 프로젝트 구조 목표
 

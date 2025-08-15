@@ -11,7 +11,7 @@
     "format": "bun biome format",
     "lint": "bun biome lint",
     "check": "bun biome check",
-    "deploy": "bun run build && gh-pages -d dist"
+    "deploy:manual": "bun run build && gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
