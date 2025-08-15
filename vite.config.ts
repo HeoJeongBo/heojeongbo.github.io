@@ -8,7 +8,7 @@ import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/heojeongbo.github.io/',
+  base: '/',
   plugins: [
     TanStackRouterVite({ autoCodeSplitting: true }),
     viteReact(),
